@@ -5,6 +5,6 @@ let helloWorld = require("./controllers/hello-controller");
 app.use(require("./middleware/headers"))
 app.use(bodyParser.json());
 app.use("/hello", helloWorld)
-app.listen(porcess.env.PORT, function(req, res){
-    console.log(porcess.env.PORT)
+app.listen(process.env.PORT, function(req, res){
+    console.log(process.env.PORT)
 })
