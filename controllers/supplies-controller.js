@@ -6,33 +6,26 @@ router.post("/new", function (req, res) {
     let pid = req.body.supplies.pid;
     let brand = req.body.supplies.brand;
     let item = req.body.supplies.item;
-    let amount = req.body.supplies.amount;
-    let last = req.body.supplies.last;
-    let error = false;
-    for (i in brand) {
-        Supply.create({
+    let amount = req.body.supplies.amount
+        
+    Supply.create({
             pid: pid,
-            brand: brand[i],
-            item: item[i],
-            amount: amount[i]
+            brand: brand,
+            item: item,
+            amount: amount
         })
         .then(
-            function duliePSuccess() {
+            function supplyPSuccess() {
                 console.log("Great!")
+                res.status(200).json({
+                    message: "Posted Supplies"
+                })
             },
-            function duliePError(err) {
+            function supplyPError(err) {
+                console.log("^V^V^V^V^V^V^V^V^THIS_IS_WHERE_I_FAILED^V^V^V^V^V^V^V^V^V^", err)
                 res.json(500, err.message)
-                error = true;
             }
         )
-    }
-setTimeout(function(){
-    if(!error){
-        res.status(200).json({
-            message: "Posted Supplies"
-        })
-    }
-}, 2000);
 })
 
 router.delete("/delete/:id", function (req, res) {
