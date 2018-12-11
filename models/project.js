@@ -7,7 +7,6 @@ module.exports = function( sequelize, DataTypes) {
         index: {
             type: DataTypes.INTEGER,
             notEmpty: true,
-            unique: true
         },
         title: {
             type: DataTypes.STRING,

@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 app.use("/hello", helloWorld)
 app.use("/user", User)
 app.use("/email", Email)
+app.use(require("./middleware/validate-session"))
 app.use("/projects", Project)
 app.use("/supplies", Supply)
 app.listen(process.env.PORT, function(req, res){
