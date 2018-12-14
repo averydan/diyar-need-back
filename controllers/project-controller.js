@@ -49,7 +49,8 @@ router.delete("/delete/:id", function (req, res) {
 })
 
 router.get("/get/", function (req, res) {
-    Project.findAll()
+    console.log(req.user.dataValues.id)
+    Project.findAll( {where: { aid: req.user.dataValues.id}} )
         .then(
             function projectFSuccess(data) {
                 res.status(200).json(data)
